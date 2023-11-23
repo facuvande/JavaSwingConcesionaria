@@ -5,6 +5,8 @@
 package com.automovil.igu;
 
 import com.automovil.logica.Controladora;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 public class AltaAutomovil extends javax.swing.JFrame {
 
@@ -205,19 +207,34 @@ public class AltaAutomovil extends javax.swing.JFrame {
         String patente = txtPatente.getText();
         int cantPuertas = Integer.parseInt(txtCantPuertas.getText());
         control.agregarAutomovil(modelo, marca, motor, color, patente, cantPuertas);
-
+        mostrarMensaje("El automovil se agrego correctamente", "Info", "Agregado exitoso");
+        vaciarCampos();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        vaciarCampos();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    public void vaciarCampos(){
         txtModelo.setText("");
         txtMarca.setText("");
         txtMotor.setText("");
         txtColor.setText("");
         txtPatente.setText("");
         txtCantPuertas.setText("");
-    }//GEN-LAST:event_btnLimpiarActionPerformed
-
+    };
     
+    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if(tipo.equals("Info")){
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }else if(tipo.equals("Error")){
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
