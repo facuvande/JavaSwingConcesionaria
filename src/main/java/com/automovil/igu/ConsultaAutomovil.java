@@ -3,6 +3,8 @@ package com.automovil.igu;
 import com.automovil.logica.Automovil;
 import com.automovil.logica.Controladora;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ConsultaAutomovil extends javax.swing.JFrame {
@@ -150,12 +152,28 @@ public class ConsultaAutomovil extends javax.swing.JFrame {
                 // getValueAt traeme el valor que este en
                 int idAuto = Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
                 control.borrarAuto(idAuto);
+                mostrarMensaje("Auto borrado correctamente", "Info", "Borrado exitoso");
                 cargarTabla();
+            }else{
+                mostrarMensaje("No has seleccionado un registro para eliminar", "Error", "Error al eliminar");
             }
+        }else{
+            mostrarMensaje("La tabla esta vacia, no se puede eliminar", "Error", "Ocurrio un error");
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
-
+    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if(tipo.equals("Info")){
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }else if(tipo.equals("Error")){
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
