@@ -45,6 +45,11 @@ public class Principal extends javax.swing.JFrame {
 
         btnAltaAuto.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btnAltaAuto.setText("Alta de Automoviles");
+        btnAltaAuto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAltaAutoActionPerformed(evt);
+            }
+        });
 
         btnSalir.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btnSalir.setText("Salir");
@@ -109,6 +114,13 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAltaAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaAutoActionPerformed
+        // TODO add your handling code here:
+        AltaAutomovil alta = new AltaAutomovil();
+        alta.setVisible(true);
+        alta.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnAltaAutoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
