@@ -3,6 +3,7 @@ package com.automovil.logica;
 // Recibe peticiones de la interfaz grafica y lo manda a donde sea necesario
 
 import com.automovil.persistencia.ControladoraPersistencia;
+import java.util.List;
 
 // La logica se encarga de modelar
 public class Controladora {
@@ -20,6 +21,10 @@ public class Controladora {
         auto.setCantPuertas(cantPuertas);
         
         controlPersis.agregarAutomovil(auto);
+    }
+
+    public List<Automovil> traerAutos() {
+        return controlPersis.traerAutos();
     }
     
 }

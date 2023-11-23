@@ -4,6 +4,8 @@
  */
 package com.automovil.igu;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author facun
@@ -34,6 +36,11 @@ public class Principal extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setText("SISTEMA DE VENTA DE AUTOMOVILES");
@@ -42,6 +49,11 @@ public class Principal extends javax.swing.JFrame {
 
         btnConsulta.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btnConsulta.setText("Consulta, edicion y baja");
+        btnConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaActionPerformed(evt);
+            }
+        });
 
         btnAltaAuto.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btnAltaAuto.setText("Alta de Automoviles");
@@ -122,6 +134,17 @@ public class Principal extends javax.swing.JFrame {
         alta.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnAltaAutoActionPerformed
 
+    private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
+        ConsultaAutomovil consu = new ConsultaAutomovil();
+        consu.setVisible(true);
+        consu.setLocationRelativeTo(null);
+                
+    }//GEN-LAST:event_btnConsultaActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+    }//GEN-LAST:event_formWindowOpened
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAltaAuto;
@@ -131,4 +154,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
 }
