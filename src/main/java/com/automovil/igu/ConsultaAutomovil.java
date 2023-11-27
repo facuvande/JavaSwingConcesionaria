@@ -74,6 +74,11 @@ public class ConsultaAutomovil extends javax.swing.JFrame {
 
         btnModificar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -161,6 +166,27 @@ public class ConsultaAutomovil extends javax.swing.JFrame {
             mostrarMensaje("La tabla esta vacia, no se puede eliminar", "Error", "Ocurrio un error");
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        if(tablaAutos.getRowCount() > 0) {
+            if(tablaAutos.getSelectedRow() != -1){
+                
+                // Obtenemos auto a modificar
+                int idAuto = Integer.parseInt(String.valueOf(tablaAutos.getValueAt(tablaAutos.getSelectedRow(), 0)));
+                ModifAuto miModificacion = new ModifAuto(idAuto);
+                miModificacion.setVisible(true);
+                miModificacion.setLocationRelativeTo(null);
+                
+                // Cerramos la ventana
+                this.dispose();
+                
+            }else{
+                mostrarMensaje("No has seleccionado un registro para modificar", "Error", "Error al modificar");
+            }
+        }else{
+            mostrarMensaje("La tabla esta vacia, no se puede modificar", "Error", "Ocurrio un error");
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     public void mostrarMensaje(String mensaje, String tipo, String titulo){
         JOptionPane optionPane = new JOptionPane(mensaje);
